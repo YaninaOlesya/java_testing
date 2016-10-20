@@ -1,3 +1,5 @@
+package ru.java_testing.sandbox;
+
 public class MyFirstProgram {
 
 	public static void main(String[] args) {
