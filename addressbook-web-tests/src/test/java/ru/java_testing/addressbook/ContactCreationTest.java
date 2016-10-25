@@ -33,7 +33,7 @@ public class ContactCreationTest {
     @Test
     public void testContactCreation() {
         initContactCreation();
-        fillContactForm();
+        fillContactForm(new ContactData("test1", "test2", "test3", "test4", "test5", "test6"));
         submitContactCreation();
         returnToHomePage();
     }
@@ -46,25 +46,25 @@ public class ContactCreationTest {
         wd.findElement(By.name("submit")).click();
     }
 
-    private void fillContactForm() {
+    private void fillContactForm(ContactData contactData) {
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys("test1");
+        wd.findElement(By.name("firstname")).sendKeys(contactData.getFirst_name());
         wd.findElement(By.name("lastname")).click();
         wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys("test2");
+        wd.findElement(By.name("lastname")).sendKeys(contactData.getLast_name());
         wd.findElement(By.name("nickname")).click();
         wd.findElement(By.name("nickname")).clear();
-        wd.findElement(By.name("nickname")).sendKeys("test3");
+        wd.findElement(By.name("nickname")).sendKeys(contactData.getNikname());
         wd.findElement(By.name("title")).click();
         wd.findElement(By.name("title")).clear();
-        wd.findElement(By.name("title")).sendKeys("test4");
+        wd.findElement(By.name("title")).sendKeys(contactData.getTitle());
         wd.findElement(By.name("home")).click();
         wd.findElement(By.name("home")).clear();
-        wd.findElement(By.name("home")).sendKeys("test5");
+        wd.findElement(By.name("home")).sendKeys(contactData.getHome_phone());
         wd.findElement(By.name("email")).click();
         wd.findElement(By.name("email")).clear();
-        wd.findElement(By.name("email")).sendKeys("test6");
+        wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
     }
 
     private void initContactCreation() {
