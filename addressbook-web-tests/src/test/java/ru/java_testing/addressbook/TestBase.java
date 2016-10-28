@@ -2,6 +2,7 @@ package ru.java_testing.addressbook;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -12,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Олеся on 28.10.2016.
  */
 public class TestBase {
-    FirefoxDriver wd;
+    ChromeDriver wd;
 
     public static boolean isAlertPresent(FirefoxDriver wd) {
         try {
@@ -25,7 +26,7 @@ public class TestBase {
 
     @BeforeMethod
     public void setUp() throws Exception {
-        wd = new FirefoxDriver();
+        wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/group.php");
         login("admin", "secret");
