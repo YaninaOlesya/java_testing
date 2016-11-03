@@ -1,6 +1,7 @@
 package ru.java_testing.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.java_testing.addressbook.model.ContactData;
 
@@ -9,7 +10,7 @@ import ru.java_testing.addressbook.model.ContactData;
  */
 public class ContactHelper extends HelperBase{
 
-    public ContactHelper(ChromeDriver wd) {
+    public ContactHelper(WebDriver wd) {
         super(wd);
     }
 
