@@ -1,5 +1,6 @@
 package ru.java_testing.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.java_testing.addressbook.model.GroupData;
 
@@ -11,6 +12,7 @@ public class GroupModificationTests extends TestBase {
     @Test
     public void testGroupModification() {
         app.getNavigationHelper().gotoGroupPage();
+        int before = app.getGroupHelper().getGroupCount();
         if (! app.getGroupHelper().isTheheAGroup()) {
             app.getGroupHelper().createGroup(new GroupData("test1", null, "test3"));
         }
@@ -19,5 +21,7 @@ public class GroupModificationTests extends TestBase {
         app.getGroupHelper().fillGroupForm(new GroupData("test123", "test2", "test3"));
         app.getGroupHelper().submitGroupModification();
         app.getGroupHelper().returnToGroupPage();
+        int after = app.getGroupHelper().getGroupCount();
+        Assert.assertEquals(after, before);
     }
 }
