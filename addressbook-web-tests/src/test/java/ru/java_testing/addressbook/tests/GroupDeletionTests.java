@@ -1,6 +1,5 @@
 package ru.java_testing.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.java_testing.addressbook.model.GroupData;

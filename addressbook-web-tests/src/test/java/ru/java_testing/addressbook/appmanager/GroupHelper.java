@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.java_testing.addressbook.model.GroupData;
 import ru.java_testing.addressbook.model.Groups;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Олеся on 29.10.2016.
