@@ -1,35 +1,35 @@
 package ru.java_testing.addressbook.model;
 
 public class ContactData {
-    private int id;
-    private final String first_name;
-    private final String last_name;
-    private final String nickname;
-    private final String title;
-    private final String home_phone;
-    private final String email;
+    private int id = Integer.MAX_VALUE;
+    private String first_name;
+    private String last_name;
+    private String nickname;
+    private String title;
+    private String home_phone;
+    private String email;
     private String group;
 
-    public ContactData(String first_name, String last_name, String nickname, String title, String home_phone, String email, String group) {
-        this.id = Integer.MAX_VALUE;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.nickname = nickname;
-        this.title = title;
-        this.home_phone = home_phone;
-        this.email = email;
-        this.group = group;
-    }
-    public ContactData(int id, String first_name, String last_name, String nickname, String title, String home_phone, String email, String group) {
-        this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.nickname = nickname;
-        this.title = title;
-        this.home_phone = home_phone;
-        this.email = email;
-        this.group = group;
-    }
+//    public ContactData(String first_name, String last_name, String nickname, String title, String home_phone, String email, String group) {
+//        this.id = Integer.MAX_VALUE;
+//        this.first_name = first_name;
+//        this.last_name = last_name;
+//        this.nickname = nickname;
+//        this.title = title;
+//        this.home_phone = home_phone;
+//        this.email = email;
+//        this.group = group;
+//    }
+//    public ContactData(int id, String first_name, String last_name, String nickname, String title, String home_phone, String email, String group) {
+//        this.id = id;
+//        this.first_name = first_name;
+//        this.last_name = last_name;
+//        this.nickname = nickname;
+//        this.title = title;
+//        this.home_phone = home_phone;
+//        this.email = email;
+//        this.group = group;
+//    }
 
     public int getId() {
 
@@ -63,6 +63,46 @@ public class ContactData {
         return group;
     }
 
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public ContactData withFirst_name(String first_name) {
+        this.first_name = first_name;
+        return this;
+    }
+
+    public ContactData withLast_name(String last_name) {
+        this.last_name = last_name;
+        return this;
+    }
+
+    public ContactData withNickname(String nickname) {
+        this.nickname = nickname;
+        return this;
+    }
+
+    public ContactData withTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public ContactData withHome_phone(String home_phone) {
+        this.home_phone = home_phone;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ContactData{" +
@@ -80,8 +120,9 @@ public class ContactData {
         ContactData that = (ContactData) o;
 
         if (first_name != null ? !first_name.equals(that.first_name) : that.first_name != null) return false;
-        return last_name != null ? last_name.equals(that.last_name) : that.last_name == null;
+        if (last_name != null ? !last_name.equals(that.last_name) : that.last_name != null) return false;
 
+        return true;
     }
 
     @Override
