@@ -6,6 +6,7 @@ public class ContactData {
     private String lastName;
     private String nickname;
     private String title;
+    private String address;
     private String homePhone;
     private String mobilePhone;
     private String workPhone;
@@ -43,6 +44,10 @@ public class ContactData {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public String getHomePhone() {
@@ -95,6 +100,11 @@ public class ContactData {
 
     public ContactData withTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
         return this;
     }
 
