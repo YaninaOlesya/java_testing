@@ -24,6 +24,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
+
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("nickname"), contactData.getNickname());
@@ -122,6 +123,8 @@ public class ContactHelper extends HelperBase{
         initContactModificationById(contact.getId());
         String first_name = wd.findElement(By.name("firstname")).getAttribute("value");
         String last_name = wd.findElement(By.name("lastname")).getAttribute("value");
+        String nickname = wd.findElement(By.name("nickname")).getAttribute("value");
+        String title = wd.findElement(By.name("title")).getAttribute("value");
         String address = wd.findElement(By.name("address")).getText();
         String home = wd.findElement(By.name("home")).getAttribute("value");
         String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
@@ -130,9 +133,19 @@ public class ContactHelper extends HelperBase{
         String email2 = wd.findElement(By.name("email2")).getAttribute("value");
         String email3 = wd.findElement(By.name("email3")).getAttribute("value");
         wd.navigate().back();
-        return  new ContactData().withId(contact.getId()).withFirstName(first_name).withLastName(last_name).withAddress(address)
+        return  new ContactData().withId(contact.getId()).withFirstName(first_name).withLastName(last_name)
+                .withNickname(nickname).withTitle(title).withAddress(address)
                 .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work)
                 .withEmail1(email1).withEmail2(email2).withEmail3(email3);
 
+    }
+
+    public String detailsInfo(ContactData contact) {
+        gotoDetailsPage(contact.getId());
+        return wd.findElement(By.xpath("//div[@id='content']")).getText().replaceAll("\\s", "").replaceAll("[:HMW]", "");
+    }
+
+    private void gotoDetailsPage(int id) {
+        wd.findElement(By.cssSelector("input[id='" + id + "']")).findElement(By.xpath("./../..")).findElement(By.xpath("td[7]/a/img")).click();
     }
 }
