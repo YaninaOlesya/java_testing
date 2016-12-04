@@ -2,13 +2,14 @@ package ru.java_testing.addressbook.model;
 
 public class ContactData {
     private int id = Integer.MAX_VALUE;
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String nickname;
     private String title;
     private String homePhone;
     private String mobilePhone;
     private String workPhone;
+    private String allPhones;
     private String email;
     private String group;
 
@@ -16,12 +17,13 @@ public class ContactData {
 
         return id;
     }
+
     public String getFirstName() {
-        return first_name;
+        return firstName;
     }
 
     public String getLastName() {
-        return last_name;
+        return lastName;
     }
 
     public String getMobilePhone() {
@@ -44,6 +46,10 @@ public class ContactData {
         return homePhone;
     }
 
+    public String getAllPhones() {
+        return allPhones;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -58,12 +64,12 @@ public class ContactData {
     }
 
     public ContactData withFirstName(String first_name) {
-        this.first_name = first_name;
+        this.firstName = first_name;
         return this;
     }
 
     public ContactData withLastName(String last_name) {
-        this.last_name = last_name;
+        this.lastName = last_name;
         return this;
     }
 
@@ -74,6 +80,11 @@ public class ContactData {
 
     public ContactData withTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
         return this;
     }
 
@@ -92,9 +103,9 @@ public class ContactData {
         return  this;
     }
 
-    public ContactData withEmail(String email) {
-        this.email = email;
-        return this;
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return  this;
     }
 
     public ContactData withGroup(String group) {
@@ -106,8 +117,8 @@ public class ContactData {
     public String toString() {
         return "ContactData{" +
                 "id='" + id + '\'' +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
 
@@ -119,16 +130,17 @@ public class ContactData {
         ContactData that = (ContactData) o;
 
         if (id != that.id) return false;
-        if (first_name != null ? !first_name.equals(that.first_name) : that.first_name != null) return false;
-        return last_name != null ? last_name.equals(that.last_name) : that.last_name == null;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (first_name != null ? first_name.hashCode() : 0);
-        result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         return result;
     }
+
 }

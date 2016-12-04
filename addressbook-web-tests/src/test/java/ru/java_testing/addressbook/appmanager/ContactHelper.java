@@ -58,7 +58,6 @@ public class ContactHelper extends HelperBase{
     }
 
     public void initContactModificationById(int id) {
-        //wd.findElement(By.xpath(String.format("//input[id='%s']/../../td[8]/a", id))).click();
         wd.findElement(By.cssSelector("input[id='" + id + "']")).findElement(By.xpath("./../..")).findElement(By.xpath("td[8]/a/img")).click();
     }
 
@@ -76,7 +75,6 @@ public class ContactHelper extends HelperBase{
         submitContactCreation();
         contactCache = null;
         returnToHomePage();
-
     }
 
     public void modify( ContactData contact) {
@@ -106,11 +104,11 @@ public class ContactHelper extends HelperBase{
         for (WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("id"));
-            String last_name = cells.get(1).getText();
-            String first_name = cells.get(2).getText();
-            String[] phones = cells.get(5).getText().split("\n");
-            contactCache.add(new ContactData().withId(id).withFirstName(first_name).withLastName(last_name)
-                    .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
+            String lastName = cells.get(1).getText();
+            String firstName = cells.get(2).getText();
+            String allPhones = cells.get(5).getText();
+            contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName)
+                    .withAllPhones(allPhones));
         }
         return new Contacts(contactCache);
     }
