@@ -3,15 +3,17 @@ package ru.java_testing.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.java_testing.addressbook.model.ContactData;
-import ru.java_testing.addressbook.model.Contacts;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Created by Олеся on 29.10.2016.
+ * Created by Олеся on 04.12.2016.
  */
-public class ContactDeletionTests extends TestBase{
+public class ContactEmailTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
@@ -26,13 +28,22 @@ public class ContactDeletionTests extends TestBase{
     }
 
     @Test
-    public void testContactDeletion() {
-        Contacts before = app.contact().all();
-        ContactData deletedContact = before.iterator().next();
-        app.contact().delete(deletedContact);
-        assertThat(app.contact().count(), equalTo(before.size() - 1));
-        Contacts after = app.contact().all();
-        assertThat(after, equalTo(before.without(deletedContact)));
+    public  void testContactEmails() {
+        ContactData contact = app.contact().all().iterator().next();
+        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+
+        assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
+    }
+
+    private String mergeEmails(ContactData contact) {
+        return Arrays.asList(contact.getEmail1(), contact.getEmail2(), contact.getEmail3())
+                .stream().filter((s) -> ! s.equals(""))
+                .map(ContactEmailTests::cleaned)
+                .collect(Collectors.joining("\n"));
+    }
+
+    public static String cleaned(String email) {
+        return email.replaceAll("\\s", "");
     }
 
 }
