@@ -6,7 +6,9 @@ public class ContactData {
     private String last_name;
     private String nickname;
     private String title;
-    private String home_phone;
+    private String homePhone;
+    private String mobilePhone;
+    private String workPhone;
     private String email;
     private String group;
 
@@ -14,12 +16,20 @@ public class ContactData {
 
         return id;
     }
-    public String getFirst_name() {
+    public String getFirstName() {
         return first_name;
     }
 
-    public String getLast_name() {
+    public String getLastName() {
         return last_name;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public String getWorkPhone() {
+        return workPhone;
     }
 
     public String getNickname() {
@@ -30,8 +40,8 @@ public class ContactData {
         return title;
     }
 
-    public String getHome_phone() {
-        return home_phone;
+    public String getHomePhone() {
+        return homePhone;
     }
 
     public String getEmail() {
@@ -47,12 +57,12 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withFirst_name(String first_name) {
+    public ContactData withFirstName(String first_name) {
         this.first_name = first_name;
         return this;
     }
 
-    public ContactData withLast_name(String last_name) {
+    public ContactData withLastName(String last_name) {
         this.last_name = last_name;
         return this;
     }
@@ -67,9 +77,19 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withHome_phone(String home_phone) {
-        this.home_phone = home_phone;
+    public ContactData withHomePhone(String homePhone) {
+        this.homePhone = homePhone;
         return this;
+    }
+
+    public ContactData withMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+        return  this;
+    }
+
+    public ContactData withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
+        return  this;
     }
 
     public ContactData withEmail(String email) {
