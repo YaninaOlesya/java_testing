@@ -63,6 +63,10 @@ public class ContactHelper extends HelperBase{
         click(By.name("update"));
     }
 
+    public int count() {
+        return wd.findElements(By.name("entry")).size();
+    }
+
     public void create(ContactData contact) {
         initContactCreation();
         fillContactForm(contact, true);
